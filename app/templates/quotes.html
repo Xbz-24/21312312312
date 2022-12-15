@@ -1,0 +1,68 @@
+{% extends 'base.jinja2' %}
+
+{% block styles %}
+<style>
+</style>
+{% endblock %}
+
+{% block main %}
+{% if session.user %}
+<h1>Bienvenido, {{ session.user.first_name }}!</h1><br>
+{% endif %}
+<div class="container row d-flex justify-content-center align-content-center">
+    <div class="col offset-2">
+        <h1 class="text-left">Otros comentarios:</h1>
+        {% for quotes in quotable_quotes %}
+        <div class="card mb-3" style="width: 30rem;">
+            <div class="card-body">
+                <h5 class="card_title">{{ quotes.message }}</h5>
+                <br><br>
+                <div class="row row-cols-2">
+                    <p>Comentado por:<a href="#" class="card-link"> {{ quotes.autor }} </a></p>
+                    <a href="/quotes/join/{{quotes.id}}" class="btn btn-primary">Anadir a favoritos</a>
+                    {% if quotes.creator_id == session.user.id %}
+                    <a href="/quotes/edit/{{quotes.id}}">editar</a><br>
+                    <a href="/quotes/drop/{{quotes.id}}">eliminar</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col">
+        <div>
+            <h1 class="text-left">Mis favoritos:</h1>
+            {% for quotes in favorites %}
+            <div class="card mb-3" style="width: 30rem;">
+                <div class="card-body">
+                    <h5 class="card_title">{{ quotes.message }}</h5>
+                    <br><br>
+                    <div class="row row-cols-2">
+                        <div>
+                            <p>Comentado por:<a href="#" class="card-link"> {{ quotes.autor }} </a></p>
+                        </div>
+                                <a href="/quotes/drop/{{quotes.id}}" class="btn btn-primary">Eliminar de favoritos</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col mt-4 border border-dark">
+            <div class="col justify-content-center">
+                <h1 class="text-left">Añade un comentario:</h1>
+                <form action="/quotes/new" method="POST">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Autor comentario:</label>
+                        <input type="text" name="autor" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Mensaje:</label>
+                        <textarea name="mensaje" id="" cols="30" rows="10" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}

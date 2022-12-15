@@ -1,0 +1,56 @@
+{% extends 'base.jinja2' %}
+
+{% block styles %}
+<style>
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-around">
+        <div class="col-5 mx-auto border p-5 my-5 text-light bg-dark">
+            <h3 class="text-center">Registrarse</h3>
+            <form action="/register" method="post">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                    <input name="first_name" type="text" class="form-control" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Apellido</label>
+                    <input name="last_name" type="text" class="form-control" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" name="email" required>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Confirme contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password_confirm"
+                        required>
+                </div>
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </form>
+        </div>
+        <div class="col-5 mx-auto border p-5 my-5 text-light bg-dark">
+            <h3 class="text-center">Ingresar</h3>
+            <form method="post" action="/login">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input name="email" required type="email" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input name="password" required type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

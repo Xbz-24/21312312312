@@ -1,0 +1,35 @@
+{% extends 'base.jinja' %}
+
+{% block styles %}
+<style>
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-around">
+        <div class="col-8 offset-2 mx-auto border p-5 my-5 text-light bg-dark">
+            <h3 class="text-center">Cambie su Contraseña</h3>
+            <h5 class="text-center">Hola Nombre</h5>
+            <form action="/changepwd" method="post">
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña Actual</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="old_password" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Nueva Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="new_password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Confirme Nueva Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="new_password_confirm"
+                        required>
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

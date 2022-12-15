@@ -1,0 +1,36 @@
+{% extends 'base.jinja2' %}
+
+{% block styles %}
+<style>
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-4 offset-4">
+            <title>Quotable Quotes</title>
+            <meta description='Quotable Quotes App page for one user '>
+            <meta charset='utf-8' />
+            </head>
+            <body>
+                <div id='wrapper'>
+                    <div id="header">
+                        <div class="row">
+                            <h3>Posted by: {{ quote.autor }}</h3>
+                        </div>
+                        <div class="row">
+                            <h3>Count: </h3>
+                        </div>
+                        {% for quote in quotes %}
+                        <div class="row">
+                            <p><span class="author">{{ quote.autor }} </span> {{ quote.message }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </body>
+        </div>
+    </div>
+</div>
+{% endblock %}
